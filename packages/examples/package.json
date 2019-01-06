@@ -1,0 +1,30 @@
+{
+    "name": "@mp-webpack-tools/examples",
+    "version": "4.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "b1": "node wechat-target/build/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/imingyu/miniprogram-webpack-tools.git"
+    },
+    "author": "imingyu",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/imingyu/miniprogram-webpack-tools/issues"
+    },
+    "homepage": "https://github.com/imingyu/miniprogram-webpack-tools#readme",
+    "dependencies": {
+        "@mp-webpack-tools/target-core": "^4.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.2.3",
+        "babel-loader": "^8.0.5",
+        "clean-webpack-plugin": "^1.0.0",
+        "webpack": "^4.28.3",
+        "webpack-merge": "^4.2.1"
+    }
+}
