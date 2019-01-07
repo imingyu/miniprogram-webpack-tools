@@ -17,6 +17,7 @@ const webpackConfig = {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
     },
+    externals: {},
     module: {
         rules: [
             {

@@ -1,3 +1,6 @@
+console.log(__filename);
+console.log(__dirname);
+console.log(Object.keys(global));
 App({
     onLaunch: function() {
         // 展示本地存储能力
