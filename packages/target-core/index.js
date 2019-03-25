@@ -9,7 +9,7 @@ module.exports = options => {
     }
     return compiler => {
         compiler.mpTargetOptions = mrege({}, defaultOptions, options);
-        return target(compiler);
+        target(compiler);
     };
 };
 module.exports.version = version;

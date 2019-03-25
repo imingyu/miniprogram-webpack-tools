@@ -43,14 +43,11 @@ module.exports = compiler => {
             }
         }
 
-        if (replaceWebpack.output) {
-            webpackOptions.output = webpackOptions.output || {};
-            if (replaceWebpack.output.globalObject) {
-                webpackOptions.output.globalObject =
-                    typeof replaceWebpack.output.globalObject === 'function'
-                        ? replaceWebpack.output.globalObject(compiler, platform)
-                        : replaceWebpack.output.globalObject;
-            }
+        if (replaceWebpack.output && replaceWebpack.output.globalObject) {
+            webpackOptions.output.globalObject =
+                typeof replaceWebpack.output.globalObject === 'function'
+                    ? replaceWebpack.output.globalObject(compiler, platform)
+                    : replaceWebpack.output.globalObject;
         }
     }
     new JsonpTemplatePlugin().apply(compiler);
