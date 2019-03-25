@@ -1,5 +1,15 @@
+const globalObjectName = {
+    wechat: 'global',
+    alipay: 'my',
+    swan: 'global'
+};
 module.exports = {
     replaceWebpack: {
+        output: {
+            globalObject: (compiler, platform) => {
+                return globalObjectName[platform];
+            },
+        },
         devtool: compiler => {
             return compiler.options.mode === 'development' ? 'cheap-source-map' : 'source-map';
         },

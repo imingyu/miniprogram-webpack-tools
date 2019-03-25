@@ -5,7 +5,7 @@ const JsonpTemplatePlugin = require('webpack/lib/web/JsonpTemplatePlugin');
 const FetchCompileWasmTemplatePlugin = require('webpack/lib/web/FetchCompileWasmTemplatePlugin');
 const NodeSourcePlugin = require('webpack/lib/node/NodeSourcePlugin');
 const FunctionModulePlugin = require('webpack/lib/FunctionModulePlugin');
-
+// const ExternalsPlugin = require('webpack/lib/ExternalsPlugin');
 module.exports = compiler => {
     const webpackOptions = compiler.options;
     const { platform, replaceWebpack } = compiler.mpTargetOptions;
@@ -16,7 +16,7 @@ module.exports = compiler => {
         if (replaceWebpack.devtool) {
             const type = typeof replaceWebpack.devtool;
             if (type === 'function') {
-                webpackOptions.devtool = replaceWebpack.devtool(compiler);
+                webpackOptions.devtool = replaceWebpack.devtool(compiler, platform);
             } else if (type === 'string') {
                 webpackOptions.devtool = replaceWebpack.devtool;
             } else {
@@ -36,8 +36,20 @@ module.exports = compiler => {
                     typeof webpackOptions.node === 'object'
                         ? mrege({}, webpackOptions.node, replaceWebpack.node)
                         : replaceWebpack.node;
+            } else if (typeof replaceWebpack.node === 'function') {
+                webpackOptions.node = replaceWebpack.node(compiler, platform);
             } else {
                 webpackOptions.node = replaceWebpack.node;
+            }
+        }
+
+        if (replaceWebpack.output) {
+            webpackOptions.output = webpackOptions.output || {};
+            if (replaceWebpack.output.globalObject) {
+                webpackOptions.output.globalObject =
+                    typeof replaceWebpack.output.globalObject === 'function'
+                        ? replaceWebpack.output.globalObject(compiler, platform)
+                        : replaceWebpack.output.globalObject;
             }
         }
     }
@@ -49,6 +61,7 @@ module.exports = compiler => {
     new FunctionModulePlugin().apply(compiler);
 
     new NodeSourcePlugin(webpackOptions.node).apply(compiler);
+    // new ExternalsPlugin('global', '').apply(compiler);
 
     const loaderTargetName = `mpwpt-${platform}`;
     new webpack.LoaderTargetPlugin(loaderTargetName).apply(compiler);

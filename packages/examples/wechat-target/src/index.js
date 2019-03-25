@@ -1,5 +1,6 @@
 const app = getApp();
-
+const util = require('./utils/util.js');
+console.log(util.formatTime(new Date()));
 Page({
     data: {
         motto: 'Hello World',
@@ -14,6 +15,7 @@ Page({
         });
     },
     onLoad: function() {
+        Promise.resolve(6);
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
