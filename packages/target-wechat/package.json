@@ -1,6 +1,6 @@
 {
     "name": "@mp-webpack-tools/target-wechat",
-    "version": "4.0.1",
+    "version": "4.0.2-alpha.0",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -17,7 +17,7 @@
     },
     "homepage": "https://github.com/imingyu/miniprogram-webpack-tools#readme",
     "dependencies": {
-        "@mp-webpack-tools/target-core": "^4.0.1",
+        "@mp-webpack-tools/target-core": "^4.0.2-alpha.0",
         "webpack": "^4.28.3"
     }
 }
