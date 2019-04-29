@@ -1,6 +1,6 @@
 {
     "name": "@mp-webpack-tools/target-alipay",
-    "version": "4.0.3-alpha.0",
+    "version": "4.0.2-alpha.1",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -17,7 +17,7 @@
     },
     "homepage": "https://github.com/imingyu/miniprogram-webpack-tools#readme",
     "dependencies": {
-        "@mp-webpack-tools/target-core": "^4.0.3-alpha.0",
+        "@mp-webpack-tools/target-core": "^4.0.2-alpha.1",
         "webpack": "^4.28.3"
     },
     "gitHead": "f90666f68ac07d7e46a540de8b96eb5f83d7a878"
